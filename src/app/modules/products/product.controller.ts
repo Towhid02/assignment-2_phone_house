@@ -8,8 +8,8 @@ const createProduct = async (req: Request, res: Response) => {
     try {
       const productData = req.body;
   
-      const zodparseData = ProductValidationSchema.parse(productData);
-      const result = await productServices.createProductIntoDB(zodparseData);
+      const zodParseData = ProductValidationSchema.parse(productData);
+      const result = await productServices.createProductIntoDB(zodParseData);
   
       res.status(200).json({
         success: true,

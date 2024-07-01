@@ -8,7 +8,7 @@ const createOrder = async (req: Request, res: Response) => {
   try {
     const orderData = req.body;
 
-    // Validate order data using orderValidationSchema
+    // Validate order data 
     const validatedOrderData = orderValidationSchema.parse(orderData);
     const { productId, quantity } = validatedOrderData;
 
