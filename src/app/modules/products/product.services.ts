@@ -3,8 +3,8 @@ import { Product } from "./product.model";
 
 
 // Create a new product
-const createProductIntoDB = async (product: TProduct) => {
-    const result = Product.create(product);
+const createProductIntoDB = async (payLoad: TProduct) => {
+    const result = await Product.create(payLoad);
     return result;
   };
 
@@ -37,6 +37,26 @@ const getProductByIdFromDB = async (id: string) => {
   return result;
 };
 
+// Update Product Information
+
+const updateProductIntoDB = async (
+  id: string,
+  updateProductIntoDB: TProduct
+) => {
+  const result = await Product.findByIdAndUpdate(id, updateProductIntoDB, {
+    new: true,
+    runValidators: true,
+  });
+  return result;
+};
+
+
+// Delete Product
+const productDeleteFromDB = async (deleteId: string) => {
+  const result = await Product.findByIdAndDelete(deleteId);
+  return result;
+};
+
   export const productServices = {
-    createProductIntoDB, getAllProductFromDB, getProductByIdFromDB
+    createProductIntoDB, getAllProductFromDB, getProductByIdFromDB, updateProductIntoDB, productDeleteFromDB
   };
