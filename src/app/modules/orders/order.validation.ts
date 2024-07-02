@@ -7,7 +7,6 @@ const orderValidationSchema = z.object({
   productId: z.string().refine((val) => Types.ObjectId.isValid(val), {
     message: "Invalid ObjectId",
   }),
-  name: z.string(),
   price: z.number().min(0),
   quantity: z.number().int().min(1),
 });

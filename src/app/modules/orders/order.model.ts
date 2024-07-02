@@ -6,8 +6,7 @@ import { TOrder } from "./order.interface";
 // Create a Mongoose schema for the Order
 const orderSchema = new Schema<TOrder>({
   email: { type: String, required: true },
-  productId: { type: String, required: true },
-  name:{type:String, required: true},
+  productId: { type: String, required: true }, 
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
 });
