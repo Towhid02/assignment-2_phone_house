@@ -1,20 +1,18 @@
-import { TProduct } from "./product.interface";
-import { Product } from "./product.model";
-
+import { TProduct } from './product.interface'
+import { Product } from './product.model'
 
 // Create a new product
 const createProductIntoDB = async (payLoad: TProduct) => {
-    const result = await Product.create(payLoad);
-    return result;
-  };
+  const result = await Product.create(payLoad)
+  return result
+}
 
-
-  // Retrieve all Products
+// Retrieve all Products
 const getAllProductFromDB = async (searchTerm: string | undefined) => {
-  let products;
+  let products
 
   if (searchTerm) {
-    const searchRegex = new RegExp(searchTerm as string, "i");
+    const searchRegex = new RegExp(searchTerm as string, 'i')
 
     products = await Product.find({
       $or: [
@@ -23,40 +21,43 @@ const getAllProductFromDB = async (searchTerm: string | undefined) => {
         { category: searchRegex },
         { tags: searchRegex },
       ],
-    });
+    })
   } else {
-    products = await Product.find();
+    products = await Product.find()
   }
 
-  return products;
-};
+  return products
+}
 
 // Retrieve a specific product by ID
 const getProductByIdFromDB = async (id: string) => {
-  const result = await Product.findById(id);
-  return result;
-};
+  const result = await Product.findById(id)
+  return result
+}
 
 // Update Product Information
 
 const updateProductIntoDB = async (
   id: string,
-  updateProductIntoDB: TProduct
+  updateProductIntoDB: TProduct,
 ) => {
   const result = await Product.findByIdAndUpdate(id, updateProductIntoDB, {
     new: true,
     runValidators: true,
-  });
-  return result;
-};
-
+  })
+  return result
+}
 
 // Delete Product
 const productDeleteFromDB = async (deleteId: string) => {
-  const result = await Product.findByIdAndDelete(deleteId);
-  return result;
-};
+  const result = await Product.findByIdAndDelete(deleteId)
+  return result
+}
 
-  export const productServices = {
-    createProductIntoDB, getAllProductFromDB, getProductByIdFromDB, updateProductIntoDB, productDeleteFromDB
-  };
+export const productServices = {
+  createProductIntoDB,
+  getAllProductFromDB,
+  getProductByIdFromDB,
+  updateProductIntoDB,
+  productDeleteFromDB,
+}
