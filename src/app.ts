@@ -7,14 +7,14 @@ const app: Application = express()
 
 // parsers
 app.use(express.json())
-app.use(cors())
+app.use(cors({ origin: "https://phone-house-backend.vercel.app/" }))
 
 // application routes
 app.use('/api', ProductRoutes)
 app.use('/api', OrderRoutes)
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Running!')
+  res.send('Phone House Application server is running!')
 })
 
 export default app
