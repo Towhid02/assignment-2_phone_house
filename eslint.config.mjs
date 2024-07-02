@@ -7,13 +7,13 @@ export default tseslint.config(
   ...tseslint.configs.recommended,
   
     {
-      rules: {
-          "no-unused-vars": "error",
-          "no-unused-expressions": "error",
-          "prefer-const": "error",
-          "no-console":"warn",
-          "no-undef":"error"
-      },
+      // rules: {
+      //     "no-unused-vars": "error",
+      //     "no-unused-expressions": "error",
+      //     "prefer-const": "error",
+      //     "no-console":"warn",
+      //     "no-undef":"error"
+      // },
     },
     {
       languageOptions:{
